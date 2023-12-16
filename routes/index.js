@@ -1,165 +1,24 @@
 var express = require('express');
 var router = express.Router();
 var multer = require('multer');
-const register = require('../modules/registerScheema');
+// const register = require('../modules/registerScheema');
 const jwt = require('jsonwebtoken');
-const isLoggedIn = require('./../modules/isloggedIn');
-const product = require('./../modules/product');
-const order = require('./../modules/orderdProductScheema');
+// const loggedInIndex = require('./../modules/loggedInIndex');
+// const product = require('./../modules/product');
+// const order = require('./../modules/orderdProductScheema');
 const path = require('path');
 const mongoose = require('mongoose');
 const ObjectId = require('mongodb');
 const app = require('./../app');
+const { signIn, signOut, signUp, loggedInIndex, Home, paymentGty, priceId, myOrders } = require('../Controller/user');
+const { addItem, newProduct } = require('../Controller/seller');
 
-// const { ObjectId } = require('mongodb');
-// const user = require('./../modules/registerScheema');
-// import { ObjectId } from 'bson';
 
-// ,,,,,,,,,,111111111111111111<<<<<Keys>>>>>>>>>>>>>11!1!!!!!!!!!!!,,,,,,,,,,,,,,
-
-const PUBLISHABLE_KEY =
-  'pk_test_51JBzFESAprUbcjS1IVUHcVBGh24zbCTH8HK2NhXeRLEzRhUKP6FiuH61n5PcorRItdXQVpJM5NCuEXkYsZZir2ol00nRBIzQe1';
-const SECRET_KEY =
-  'sk_test_51JBzFESAprUbcjS1at26Z56lRs0XajJ4DwJKStXGIF95jCDEiOaUaYPGicwThsXyQYxgsEZ1wfBoyRJRU8vH1BwW00ROd7GquN';
-
+const PUBLISHABLE_KEY = process.env.PUBLISHABLE_KEY
+const SECRET_KEY = process.env.SECRET_KEY
 const stripe = require('stripe')(SECRET_KEY);
 
 // <<<<<<<<<<<<<<<<<<<    the middlevares    >>>>>>>>>>>>>>>
-router.use('./../public', express.static(path.join(__dirname, './../public')));
-// const upload = require('./../modules/imageMulter');
-// const __dirname = path.resolve();
-
-// /****************** */ GET routs ******************************/
-router.get('/', async function (req, res, next) {
-  // getting all products in the category of carpets
-  var carpets = await product.find({ catagory: 'carpets' });
-  var bags = await product.find({ catagory: 'bags' });
-  var token = req.cookies.Token;
-  var email = req.cookies.user_email;
-  if (!token) {
-    res.render('index', { carpets: carpets, bags: bags });
-  } else if (token && email) {
-    res.redirect('/loggedIndex');
-  }
-});
-
-// *********************payment interation here************
-router.post('/price/payment', isLoggedIn, (req, res) => {
- 
-
-  console.log('reqbb');
-  console.log(req.body.price);
-  stripe.customers
-    .create({
-      email: req.body.stripeEmail,
-      source: req.body.stripeToken,
-      name: 'gotm sharma',
-
-      address: {
-        city: 'bhopal',
-        country: 'india',
-        line1: 'bhopaldkfj',
-        line2: 'badfadsf',
-        postal_code: 'asdfasdf',
-        state: 'asdfasdf',
-      },
-    })
-    .then((customer) => {
-      return stripe.charges.create({
-        amount: req.body.price * 100,
-        description: 'indianrugs',
-        currency: 'inr',
-        customer: customer.id,
-      });
-    })
-    .then(async (charge) => {
-      console.log('saving product in order section');
-
-      try {
-        const product1 = await product.find({ _id: req.body.product_id });
-
-        const user = await register.find({ Email: req.body.user_id });
-        console.log(user);
-        console.log(product1);
-
-        let product_id = product1[0]._id;
-        let productName = product1[0].title;
-        let seller_id = product1[0].seller_id;
-        let customer_id = user[0]._id;
-
-        const NForder = new order({
-          product_id: product_id,
-          productName: productName,
-          seller_id: seller_id,
-          customer_id: customer_id,
-        });
-        NForder.save().then((doc) => {
-          console.log('order saved11111111111111111111');
-        });
-      } catch (error) {
-        console.log(error);
-      }
-      console.log('payment succesfull');
-      res.redirect('..');
-    })
-    .catch((err) => {
-      res.send(err);
-    });
-});
-
-// ********* this is the index for logged in users only ****************
-
-router.get('/loggedIndex', isLoggedIn, async function (req, res, next) {
-  // getting all products in the category of carpets
-  var carpets = await product.find({ catagory: 'carpets' });
-  var bags = await product.find({ catagory: 'bags' });
-  var email = req.cookies.user_email;
-  var user = await register.find({ Email: email });
-
-  res.render('indexForLoggedInUser', {
-    carpets: carpets,
-    bags: bags,
-    user: user,
-  });
-});
-
-router.get('/menu', function (req, res, next) {
-  res.render('menu');
-});
-
-// ***************************this is the login route
-router.get('/login', (req, res, next) => {
-  res.render('login');
-});
-
-router.post('/register', (req, res, next) => {
-  let userName = req.body.fullName;
-  let useremail = req.body.Email;
-  let userMobile = req.body.mobileNumber;
-  let userPassword = req.body.password;
-
-  const user = new register({
-    Name: userName,
-    number: userMobile,
-    Email: useremail,
-    Password: userPassword,
-  });
-
-  user.save().then((doc) => {
-    const token = jwt.sign(
-      { id: user.__id },
-      'mynameispulkitupadhyayfromharda',
-      {
-        expiresIn: '10d',
-      }
-    );
-    console.log("lucky"+user);
-    res.cookie('Token', token, { httpOnly: true, maxAge: 1.728e8 });
-    res.cookie('user_email', user.Email);
-    res.redirect('/loggedIndex');
-  });
-});
-
 var storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, path.join(__dirname, './../public/upload'), function () {
@@ -179,162 +38,32 @@ var storage = multer.diskStorage({
 });
 
 var upload = multer({ storage: storage });
+router.use('./../public', express.static(path.join(__dirname, './../public')));
 
-router.post('/newProduct', upload.array('testimage'), (req, res, next) => {
-  console.log(req.files);
- 
-  try {
-    var arrimages = [];
-    for (let i = 0; i < req.files.length; i++) {
-      arrimages[i] = req.files[i].filename;
-    }
-  } catch (error) {
-    console.log(error);
-  }
-
- 
-  const prod = new product({
-    seller_id: req.body.seller_id,
-    title: req.body.title,
-    description: req.body.description,
-    price: req.body.price,
-    catagory: req.body.catagory,
-    image1: req.files[0].filename,
-    image2: req.files[1].filename,
-    image3: req.files[2].filename,
-    image4: req.files[3].filename,
-  });
-
-  prod.save().then((doc) => {
-    console.log(doc);
-    console.log(prod);
-
-    res.redirect('/');
-    // res.render('index');
-  });
+router.get('/menu', function (req, res, next) {
+  res.render('menu');
+});
+router.get('/login', (req, res, next) => {
+  res.render('login');
 });
 
-// ********************add new products *******************
-
-router.get('/addnewpro', isLoggedIn, async function (req, res, next) {
-  var email = req.cookies.user_email;
-  var user = await register.find({ Email: email });
-  res.render('addnewpro', { user: user });
-});
-
-router.post('/login', async (req, res, next) => {
-  console.log(req.body)
-  const { Email, password } = req.body;
-
-  if (!Email || !password) {
-    return next('please enter valid email or password sp fdf');
-  }
-
-  // console.log("prem")
-
-  // cheaking if the email exist in database
-
-  const User = await register.findOne({Email});
-
-  console.log(User);
-  // console.log("prem")
-
-  if (!User || !(await User.correctPassword(password, User.Password))) {
-    return next('enter the correcr cridentals');
-  }
-  console.log("lucky"+User);
-
-  const token = await jwt.sign(
-    { id: User.__id },
-    'mynameispulkitupadhyayfromharda',
-    {
-      expiresIn: '10d',
-    }
-  );
-  res.cookie('Token', token, { httpOnly: true, maxAge: 1.728e8 });
-  res.cookie('user_email', User.Email);
-
-  var prevPage = req.originalUrl;
-
-  res.redirect(`/`);
-});
-
-router.post('/logout', isLoggedIn, (req, res, next) => {
-  jwt.verify(
-    req.cookies.Token,
-    'mynameispulkitupadhyayfromharda',
-    (err, authData) => {
-      if (err) {
-        res.sendStatus(403);
-      } else {
-        res.clearCookie('Token');
-        res.clearCookie('user_email');
-        res.redirect('/');
-      }
-    }
-  );
-});
-
-// *****************getting perticuler product***************************
-router.get(`/price/:id`, async (req, res, next) => {
-  console.log(req.params);
-
-  const nproduct = await product.findById(req.params.id);
-  console.log(nproduct);
-  var email = req.cookies.user_email;
-  var user = await register.find({ Email: email });
-
-  var displayItems = await product.find({ catagory: nproduct.catagory });
-
-  console.log(nproduct);
-  res.render('product', {
-    product: nproduct,
-    displayItems: displayItems,
-    key: PUBLISHABLE_KEY,
-    user: user,
-  });
-});
+router.get('/', Home);
+router.post('/price/payment', loggedInIndex, paymentGty);
+router.get('/loggedIndex', loggedInIndex, loggedInIndex);
+router.post('/register', signUp);
+router.post('/newProduct', upload.array('testimage'), newProduct);
+router.get('/addnewpro', loggedInIndex, addItem);
+router.post('/login', signIn);
+router.post('/logout', loggedInIndex, signOut);
+router.get(`/price/:id`, priceId);
 
 router.get('/register', function (req, res, next) {
   res.render('register');
 });
-
 router.get('/submit', function (req, res, next) {
   res.render('submit');
 });
-
-// ab jo bhi banega is ke niche banega
-
-router.get('/myOrders', isLoggedIn, async (req, res, next) => {
-  // console.log(req.cookies);
-  var email = req.cookies.user_email;
-
-  var user = await register.findOne({ Email: email });
-
-  // console.log(user);
-  var orders = await order.find({ customer_id: user._id });
-
-  // const products = await product.find({ _id: or});
-
-  let products = [];
-  let sellers = [];
-
-  for (var i = 0; i < orders.length; i++) {
-    var productObj = await product.findOne({ _id: orders[i].product_id });
-    var sellersObj = await register.findOne({ _id: productObj.seller_id });
-    products.push(productObj);
-    sellers.push(sellersObj);
-  }
-  // console.log(products);
-
-  // var allUsers = register.find({});
-  res.render('myOrders', {
-    products: products,
-    orders: orders,
-    customers: user,
-    sellers: sellers,
-  });
-});
+router.get('/myOrders', loggedInIndex, myOrders);
 
 router.post('/deletorder', async (req, res, next) => {
   console.log(req.body);
@@ -345,7 +74,7 @@ router.post('/deletorder', async (req, res, next) => {
   res.redirect('/myOrders');
 });
 
-router.get('/myAccount', isLoggedIn, async (req, res, next) => {
+router.get('/myAccount', loggedInIndex, async (req, res, next) => {
   var email = req.cookies.user_email;
   var user = await register.findOne({ Email: email });
 

@@ -13,13 +13,15 @@ const http = require('http');
 const hostname = '0.0.0.0';
 //  const port = process.env.PORT || 3000;
 // const hbs = require('hbs');
+require('dotenv').config({path: "./.env"});
+
 const jwt = require('jsonwebtoken');
 var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // to support JSON bodies
 app.use(bodyParser.urlencoded({ extended: true }));
 //   express.static(path.join(__dirname, '/new gi'));
 const mongoose = require('mongoose');
-const register = require('./modules/registerScheema');
+const register = require('./Model/registerScheema');
 app.use(cookieParser());
 mongoose.connect(
   'mongodb+srv://pulkit:shraddhap@cluster0.hochl.mongodb.net/?retryWrites=true&w=majority',
