@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indian_rigs</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="product.ejs"> -->
+  <link rel="stylesheet" href="/stylesheets/product.css">
+  <style>
+    .stripe-button {
+      display: block !important;
+    }
+
+    /* ther products div */
+    .product-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .product {
+      width: 200px;
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+
+    .product img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    /* .product h3 {
+    margin-top: 10px;
+    }
+
+    .product p {
+    margin-top: 5px;
+    } */
+
+    .product button {
+      margin-top: 10px;
+    }
+
+    .logoutbtn {
+      background-color: #f44336;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 7px 15px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-left: 19px;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      outline: none;
+    }
+
+    .logoutbtn:hover {
+      background-color: #e53935;
+    }
+
+    .logoutbtn:active {
+      background-color: #c62828;
+    }
+
+    /* Animation styles */
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .logoutbtn h3 {
+      margin: 0;
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    /* the heading */
+    .parent-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      /* Adjust as needed */
+    }
+
+    .animated-heading {
+      position: relative;
+      display: inline-block;
+      animation: blink 0.5s infinite alternate;
+    }
+
+    @keyframes blink {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    /* styel for summery */
+    #checkout-summary {
+      background-color: #f7f7f7;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      transform: scale(0);
+      opacity: 0;
+      animation: summary-animation 1s forwards;
+    }
+
+    @keyframes summary-animation {
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+
+      50% {
+        transform: scale(1.2);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .prod h2 {
+      font-size: 28px;
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+      animation: text-animation 1s infinite alternate;
+    }
+
+    @keyframes text-animation {
+      0% {
+        transform: translateY(0);
+      }
+
+      100% {
+        transform: translateY(-5px);
+      }
+    }
+
+    .prod {
+
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      margin-left: 22px;
+      animation: prod-animation 1s ease-in-out infinite alternate;
+    }
+
+    /* @keyframes prod-animation {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+} */
+
+    .prod h3 {
+      font-size: 24px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .prod p {
+      font-size: 18px;
+      color: #999;
+      margin: 8px 0;
+    }
+
+    .price {
+      color: #25a80e;
+      animation: price-animation 1s infinite alternate;
+    }
+
+    /* @keyframes price-animation {
+  0% {
+    color: #25a80e;
+  }
+  100% {
+    color: #ff4500;
+  }
+} */
+
+    .tax {
+      color: #666;
+    }
+
+    .delivery {
+      color: #666;
+      animation: delivery-animation 1s infinite alternate;
+    }
+
+    /* @keyframes delivery-animation {
+  0% {
+    color: #666;
+  }
+  100% {
+    color: #25a80e;
+  }
+} */
+
+    .total {
+      font-weight: bold;
+      color: #ff4500;
+      animation: total-animation 1s infinite alternate;
+    }
+
+    /* nav stylers */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: transparent;
+      z-index: 1000;
+    }
+
+    .navbar .logo {
+      margin: 10px;
+    }
+
+    .navbar .logo img {
+      height: 50px;
+    }
+
+    .navbar .navbar-links {
+      list-style: none;
+      margin: 10px;
+      padding: 0;
+      display: flex;
+      margin-top: -24px;
+      margin-left: 49vh;
+    }
+
+    .navbar .navbar-links li {
+      margin-right: 20px;
+    }
+
+    .navbar .navbar-links li a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+      margin-left: 21px;
+    }
+
+    .navbar .navbar-links li a:hover {
+      color: #ffcc00;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar" style="background-color: black;">
+    <div class="logo">
+      <img src="https://www.etsy.com/in-en/market/business_logo_rug" alt="Company Logo">
+    </div>
+    <ul class="navbar-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Products</a></li>
+      <li><a href="#">Cart</a></li>
+      <li><a href="#">Account</a></li>
+    </ul>
+  </nav>
+
+  <div id="main" style="margin-top: 21px;">
+    <div id="left">
+      <div id="sidebox">
+
+        <% for(var i=1; i <=4; i++) {%>
+
+          <div id="sbox<%=i%>" class="sbox">
+
+            <% if(i==1){%>
+
+              <img src="/upload/<%= product.image1 %>">
+
+              <% }else if(i==2){%>
+
+                <img src="/upload/<%= product.image2 %>">
+
+                <% }else if(i==3){%>
+
+                  <img src="/upload/<%= product.image3 %>">
+
+                  <% }else if(i==4){%>
+
+                    <img src="/upload/<%= product.image4 %>">
+
+                    <% }%>
+
+          </div>
+          <% } %>
+
+            <!-- <div id="sbox1" class="sbox"></div>
+                <div id="sbox2" class="sbox"></div>
+                <div id="sbox3" class="sbox"></div>
+                <div id="sbox4" class="sbox"></div> -->
+      </div>
+      <div id="mainbox">
+        <div id="boxdesign">
+          <img id="bbImg" class="bbimg" src="/upload/<%= product.image1 %>" alt="not photo" />
+          <div class="lens"></div>
+          <div class="result"></div>
+        </div>
+        <div id="cart-design">
+          <div id="left-cart">
+
+            <!-- <script>const pathP = window.location.pathname</script>            -->
+            <% if(!user[0]){%>
+              <h1><a href="/login" style="text-decoration: none; color:black;"> Buy Now</a></h1>
+
+              <%}%>
+                <% if(user[0]){%>
+                  <h1 id="buyNow">Buy Now</h1>
+
+                  <%}%>
+
+
+
+
+          </div>
+          <div id="right-cart">
+            <h1>Add to cart</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="right">
+      <div id="main-details">
+
+        <div id="price-box">
+          <h1>
+            <%= product.title %>
+          </h1>
+          <h3 style="color:rgba(0,0,0,0.6);">
+            <%= product.description %>
+          </h3>
+
+          <h2 style="margin-top: 2vh;">$<%= product.price%> (Inculsive of all taxes)</h2>
+
+          <div id="rating">
+            <div id="rating-left">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+            <h5>300 rat , 150 Reviews</h5>
+          </div>
+
+          <h3>Free Delivery</h3>
+        </div>
+        <div id="otharized" style="margin-top: 11vh;">
+          <h2><i class="ri-refresh-line"></i>
+            -Original Brand</h2>
+          <h2><i class="ri-refresh-line"></i> -Authorised Seller</h2>
+        </div>
+        <div id="size">
+          <div id="s1" class="sizebox">
+            <h4> ready to Ship <br> 4x6 ft <br> 120x180 cm </h4>
+          </div>
+          <div id="s2" class="sizebox">
+            <h4> ready to ship <p>4x6 ft <br> 120x180 cm </h4>
+          </div>
+          <div id="s3" class="sizebox">
+            <h4> Made to order <br> 5x8 ft <br> 120x180 cm </h4>
+          </div>
+        </div>
+        <div id="product-details">
+          <h1>Product details</h1>
+          <h4>Name : <%= product.title%>
+
+              Product Name : <%= product.title%>
+                <br>
+                <%= product.description%>
+          </h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-------------------------------------------- pulkit added this line----------------------------------------- -->
+
+  <!-- isko sirf aage peechhe sarka sakte ho iske elements ko change mat karna ye hi vo button hai -->
+
+
+
+  <!-- the summery div here  -->
+
+  <div id="checkout-summary" class="summary-animation" style=" display: none;">
+    <h2>Checkout Summary</h2>
+    <div class="prod">
+      <h3>
+        <%= product.name%>
+      </h3>
+      <p class="price">Price: $<%=product.price %>
+      </p>
+      <p class="tax">Tax: $2</p>
+      <p class="delivery">Delivery Charges: $5</p>
+      <p class="total">Total: $<%=product.price + 5 + 2 %>
+      </p>
+      <!-- <% if(!user[0]){%>
+        <%console.log('nothing');%>
+        <%}%>
+        <% if(user[0]){%> -->
+
+      <form action="payment" method="POST" class="Pform" style=" display: none;">
+
+        <script src="//checkout.stripe.com/v2/checkout.js" class="stripe-button" data-key="<%= key %>"
+          data-amount="<%= product.price*100 %>" data-currency="inr" data-name="pulkit"
+          data-description="buy <%= product.title%>" data-locale="auto"></script>
+
+        <input type="number" name="price" value="<%= product.price %>" style="visibility:hidden;">
+        <input type="string" name="product_id" value="<%= product._id %>" style="visibility:hidden;">
+
+        <input type="string" name="user_id" value="<%= user[0].Email %>" style="visibility:hidden;">
+
+
+      </form>
+      <!-- <%}%> -->
+
+    </div>
+  </div>
+
+
+
+
+
+  <!-- div of other products starts here  -->
+
+
+
+
+
+
+
+  <div class="perent-container" style="display: flex; justify-content: center; font-size: 32px; margin-top: 4vh;">
+
+    <h2 class="animated-heading" style="font-size: 5vh;">See Our Other Collection</h2>
+  </div>
+  <div class="product-container" style="margin-top: 1vh;">
+
+    <% for(var i=0; i < displayItems.length; i++) { %>
+      <a href="/price/<%= displayItems[i]._id%>" style="text-decoration:none;color:rgb(31, 26, 26);">
+        <div class="product">
+          <img src="/upload/<%= displayItems[i].image1 %>" alt="Product 1">
+          <h3>
+            <%= displayItems[i].title %>
+          </h3>
+          <p>$ <%= displayItems[i].price %>
+          </p>
+          <button class="logoutbtn">
+            <h3> View Product</h3>
+          </button>
+        </div>
+      </a>
+      <% } %>
+
+
+  </div>
+
+
+
+  <!-- div of other products ends here  -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"
+    integrity="sha512-f8mwTB+Bs8a5c46DEm7HQLcJuHMBaH/UFlcgyetMqqkvTcYg4g5VXsYR71b3qC82lZytjNYvBj2pf0VekA9/FQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+
+
+
+    function Button(){
+      var leftcart = document.querySelector("#left-cart");
+    leftcart.addEventListener("mouseover", function () {
+      gsap.to("#left-cart", {
+        backgroundColor: "black",
+
+        duration: 1,
+        ease: Expo.InOut
+      })
+      gsap.to("#left-cart>h1", {
+        color: "white",
+
+        duration: 1,
+        ease: Expo.InOut
+      })
+    })
+    leftcart.addEventListener("mouseleave", function () {
+      gsap.to("#left-cart", {
+        backgroundColor: "grey",
+        duration: 1,
+        ease: Expo.InOut
+      })
+      gsap.to("#left-cart>h1", {
+        color: "black",
+        duration: 1,
+        ease: Expo.InOut
+      })
+    })
+
+    var rightcart = document.querySelector("#right-cart");
+    rightcart.addEventListener("mousemove", function () {
+      gsap.to("#right-cart", {
+        backgroundColor: "green",
+        duration: 1,
+        ease: Expo.InOut
+      })
+      gsap.to("#right-cart>h1", {
+        color: "white",
+        duration: 1,
+        ease: Expo.InOut
+      })
+    })
+    rightcart.addEventListener("mouseleave", function () {
+      gsap.to("#right-cart", {
+        backgroundColor: "grey",
+        duration: 1,
+        ease: Expo.InOut
+      })
+      gsap.to("#right-cart>h1", {
+        color: "black",
+        duration: 1,
+        ease: Expo.InOut
+      })
+    })
+    }
+    Button();
+
+    function product() {
+      var img1 = document.querySelector("#sbox1");
+      var img2 = document.querySelector("#sbox2");
+      var img3 = document.querySelector("#sbox3");
+      var img4 = document.querySelector("#sbox4");
+
+      var main_img = document.querySelector("#boxdesign #bbImg")
+      
+     
+     
+      img1.addEventListener("click", function () {
+        main_img.src = "/upload/<%= product.image1 %>"
+      })
+
+      img2.addEventListener("click", function () {
+        main_img.src = "/upload/<%= product.image2 %>"
+      })
+
+      img3.addEventListener("click", function () {
+        main_img.src = "/upload/<%= product.image3 %>"
+      })
+
+      img4.addEventListener("click", function () {
+        main_img.src = "/upload/<%= product.image4 %>"
+      })
+      
+    }
+    product();
+
+   
+
+    // pulkit`s code 
+
+    var buy = document.getElementById('buyNow');
+    var sum = document.getElementById('checkout-summary');
+    buy.addEventListener('click', () => {
+
+
+      // sum.style.visibility = "visible";
+      // sum.style.display = "block";
+      document.querySelector('#checkout-summary').style.display = "block"
+      document.querySelector('.Pform').style.display = "block"
+      var checkoutSummary = document.querySelector('#checkout-summary');
+      if (checkoutSummary) {
+        var scrollPosition = checkoutSummary.offsetTop + (checkoutSummary.offsetHeight / 2) - (window.innerHeight / 2);
+        window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
+      }
+
+    })
+
+
+
+    // mav js 
+    window.addEventListener('scroll', function () {
+      var navbar = document.querySelector('.navbar');
+      if (window.scrollY > 0) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+
+    function zoom(){
+      const container = document.querySelector("#mainbox #boxdesign")
+    
+    const image = document.querySelector("#boxdesign .bbimg")
+    image.addEventListener("click", function(){
+        console.log("hello");
+      })
+    const lens = document.querySelector(".lens")
+    const result = document.querySelector(".result")
+
+    const containerRect = container.getBoundingClientRect()
+    const imageRect = image.getBoundingClientRect()
+    const lensRect = lens.getBoundingClientRect()
+    const resultRect = result.getBoundingClientRect()
+
+    lens.addEventListener("mousemove", function(){
+      gsap.to(".result",{
+        opacity:1
+        // display:"flex"
+      })
+    })
+    lens.addEventListener("mouseleave", function(){
+        gsap.to(".result",{
+        opacity:0
+        // display:"none"
+        })
+    })
+
+    container.addEventListener("mousemove", zoomImage)
+
+    result.style.backgroundImage = `url(${image.src})`
+
+    function zoomImage(e) {
+        console.log("zoom image", e.clientX, e.clientY)
+        const { x, y } = getMousePos(e)
+
+        lens.style.left = x + "px"
+        lens.style.top = y + "px"
+
+        let fx = resultRect.width / lensRect.width
+        let fy = resultRect.height / lensRect.height
+
+        result.style.backgroundSize = `${imageRect.width * fx}px ${
+            imageRect.height * fy
+        }px`
+        result.style.backgroundPosition = `-${x * fx}px -${y * fy}px`
+    }
+
+    function getMousePos(e) {
+        let x = e.clientX - containerRect.left - lensRect.width / 2
+        let y = e.clientY - containerRect.top - lensRect.height / 2
+
+        let minX = 0
+        let minY = 0
+        let maxX = containerRect.width - lensRect.width
+        let maxY = containerRect.height - lensRect.height
+
+        if (x <= minX) {
+            x = minX
+        } else if (x >= maxX) {
+            x = maxX
+        }
+        if (y <= minY) {
+            y = minY
+        } else if (y >= maxY) {
+            y = maxY
+        }
+
+        return { x, y }
+    }
+
+
+    }
+    zoom();
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

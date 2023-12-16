@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InidanRugs</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kursor@0.1.6/dist/kursor.min.css" /> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="./stylesheets/style.css" />
+</head>
+<style>
+  .nav-link-i p {
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  color: white;
+  padding: 10px;
+  /* border: 1px solid #ccc;
+  border-radius: 5px; */
+  /* background-color: #f8f8f8; */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.nav-link-i p:hover {
+  background-color: #eaeaea;
+  color:black;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.nav-link-i p.animated {
+  animation: fadeIn 1s ease-in-out;
+}
+
+
+
+
+</style>
+<body>
+  <div class="body">
+    <div id="loader"></div>
+    <div id="div1">
+    
+     <!-- <button id="sinupbtn">Sing up</button> -->
+      <div class="video1">
+
+        <video autoplay loop muted src="./video/video.mp4"></video>
+
+      </div>
+       
+
+      <div class="overlay1">
+
+        <div class="nav">
+          <div class="overlay1-nav"></div>
+          <div class="nav-search">
+            <form action="" id="first-form">
+              <input type="text" placeholder="Search here">
+              <i class="ri-search-line"></i>
+            </form>
+          </div>
+          <div class="nav-link">
+            <div class="nav-link-i">
+              <i class="ri-map-pin-line"></i> 
+              <p>Stores</p>
+            </div>
+            <div class="nav-link-i">
+              <i class="ri-account-circle-line"></i>
+              <p>set profile</p>
+            </div>
+            <div class="nav-link-i">
+              <i class="ri-shopping-cart-2-line"></i>
+              <p>Vew Producuts</p>
+            </div>
+            <!-- <div class="nav-link-i">
+              <i class="ri-shopping-cart-2-line"></i>
+              <p>Cart</p>
+            </div> -->
+            
+          </div>
+
+          <div class="login-btn"><a href="/login">Login</a></div>
+        </div>
+
+
+        <h1 id="rugs" style="font-size: 6rem; color: rgb(201,162,92);">INDIAN RUGS</h1>
+
+        <h4 style="color: #9d9d9d; font-size: 2rem;">The Art of Handwoven Carpets </h4>
+
+        <a id="see" href="#container">See Our Collection</a>
+
+       
+        <!-- <button id="logbtn2" style="position:fixed; "><a href="/logout" method="post" style="text-decoration: none" target="_blank"> Logout</a> </button> -->
+      
+          <!-- <a href="/addnewpro"><button class="btn btn-outline-danger"  type="submit" >addnewpro</button></a> -->
+       
+
+      </div>
+    </div>
+
+    <div id="container">
+      <!-- <div class="box-c">
+          <div class="img-box"></div>
+          <h3>carpets</h3>
+          <h5>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum, nam the right youth of the right area!</h5>
+          <h6>5x8 - 10x8ft</h6>
+          <h2>Price - 50,000</h2>
+      </div> -->
+   
+         
+      <% for(var i = 0; i < carpets.length;i++){%>
+        <!-- <div onclick="window.open('/price/')" class="box-c"> -->
+
+          <div id="1" onclick="javascript:window.location.href='/price/<%= carpets[i]._id %>'"class="box-c">
+
+          <div class="img-box">
+          <img src="/upload/<%= carpets[i].image1 %>" alt="" />
+          </div>
+          <h3><%= carpets[i].catagory %></h3>
+          <h5><%= carpets[i].title %></h5>
+          <h2>Rs - <%= carpets[i].price %></h2>
+        </div>
+      <% } %>
+      <% for(var i = 0; i < bags.length;i++){%>
+        <!-- <div onclick="window.open('/price/')" class="box-c"> -->
+
+          <div id="1" onclick="javascript:window.location.href='/price/<%= bags[i]._id %>'"class="box-c">
+
+          <div class="img-box">
+          <img src="/upload/<%= bags[i].image1 %>" alt="" />
+          </div>
+          <h3><%= bags[i].catagory %></h3>
+          <h5><%= bags[i].title %></h5>
+          <h2>Rs - <%= bags[i].price %></h2>
+        </div>
+      <% } %>
+      
+      
+      <!-- <div class="nav-container">
+
+        <div onclick="javascript:window.location.href='/'" class="logo"></div>
+        <a href="/menu">
+          <div class="menu">
+            <h3>MENU</h3>
+          </div>
+        </a>
+      </div>
+      <div class="swiper">
+        <h1 id="collection">Our Collections</h1>
+        <div class="swiper-wrapper">
+        
+          <% for(var i = 0; i < carpets.length; i++) {%>
+            <div id="1" onclick="javascript:window.location.href='/price/<%= carpets[i]._id %>'" style="box-shadow: 0 18px 18px -18px black"
+            class="swiper-slide">
+            <img
+              src="/upload/<%= carpets[i].image1 %>" alt="" />
+            <h3><%= carpets[i].category %></h3>
+            <h5><%= carpets[i].title %></h5>
+            <h6> 5x8 - 10x8ft</h6>
+          </div>
+          <% } %>
+
+
+
+
+
+
+
+
+
+
+        
+           <% for(var i = 0; i < carpets.length; i++) {%>
+            <div id="1" onclick="javascript:window.location.href='/price/<%= carpets[i]._id %>'" style="box-shadow: 0 18px 18px -18px black"
+            class="swiper-slide">
+            <img
+              src="/upload/<%= carpets[i].image %>" alt="" />
+            <h3><%= carpets[i].category %></h3>
+            <h5><%= carpets[i].title %></h5>
+            <h6> 5x8 - 10x8ft</h6>
+          </div>
+          <% } %> 
+ 
+
+
+
+
+
+
+
+
+
+
+         
+        </div> 
+        <div class="swiper-wrapper " id="downS">
+        
+           <% for(var i = 0; i < bags.length; i++) {%>
+            <div id="1" onclick="javascript:window.location.href='/price/<%= bags[i]._id %>'" style="box-shadow: 0 18px 18px -18px black"
+            class="swiper-slide">
+            <img
+              src="/upload/<%= bags[i].image1 %>" alt="" />
+            <h3><%= bags[i].category %></h3>
+            <h5><%= bags[i].title %></h5>
+            <h6> 5x8 - 10x8ft</h6>
+          </div>
+          <% } %> 
+           
+        <div class="drag">
+          <h6>Drag Here..</h6>
+        </div>
+        <div class="footer">
+          <div class="made">
+            <div class="made-in-india">
+            </div> <span></span>
+            <div class="text">
+              <h5>MADE IN INDIA</h5>
+            </div>
+          </div>
+          <div class="second-logo">
+
+          </div>
+        </div>
+
+      </div>
+      </div>
+      <div class="div2">
+      <div class="left">
+        <h1>Embrace the
+          spirit of India</h1>
+        <p>Our Mission</p>
+        <h3>Our Mission
+          Every purchase
+          has a purpose</h3>
+        <h5 style="max-width: 70%;">
+          We have direct partnerships with over 320 Indian artisans and over 700 indirectly. As a social enterprise
+          that seeks to offer a fair-trade platform, our primary purpose is to support handicraft workers. With each
+          purchase you make, you can help make a differnce. </h5>
+        <a id="back" href="#container">Back to our Collection</a>
+      </div>
+      <div class="right"></div>
+      </div>
+      <div class="footer-div">
+      <div class="footer-overlay">
+        <section>email</section>
+        <section>About us</section>
+        <section>Social media handle</section>
+        <section>contact</section>
+      </div>
+      <video autoplay loop muted src="./video/video.mp4"></video>
+      </div> -->
+  </div>
+
+  <div class="aboutpage1">
+    <div class="apleft">
+     <div class="up"></div>
+     <div class="down"></div>
+    </div>
+    <div class="apright">
+      <div class="rtop">
+        <h3>IDEAS AND ADVICE</h3>
+        <p>Check out our latest how to's + design tips to find the perfect rug for your space.</p>
+      </div>
+      <div class="rmid">  </div>
+      <div class="rbottom">   </div>
+    </div>
+  </div>
+
+  <div class="footer-div">
+    <div class="footer-overlay">
+      <section>  <h1 id="rugs-footer" style="font-size: 4rem; color: rgb(201,162,92);">INDIAN <br> RUGS</h1></section>
+      <!-- <section>About us </section> -->
+      <section>
+        <h2>About Us </h2>
+     <br>   <h5>About Us</h5>
+     <br>  <h5>Privacy policy</h5>
+     <br> <h5> Terms & Conditions</h5>
+     <br> <h5></h5>
+      </section>
+      <section> <h2>Contact us </h2>
+     <br>    <h5>Address: </h5>
+     <br>   <h5>Email - indianrugs@gmail.com</h5>
+     <br>   <h5> Phone no. - +916266761952,6269148063 , 9301785324</h5>
+        
+
+      </section>
+    </div>
+    <video autoplay loop muted src="./video/video.mp4"></video>
+    </div> 
+
+
+    
+  <script src="https://cdn.jsdelivr.net/npm/kursor@0.1.6/dist/kursor.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <script src="./javascripts/script.js"></script>
+</body>
+
+</html>

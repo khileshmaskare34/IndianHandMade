@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Orders - Flipkart</title>
+  <style>
+    /* Internal CSS */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #2874f0;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      background-color: #f1f3f6;
+      padding: 10px;
+    }
+
+    nav ul li {
+      margin: 0 10px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #000;
+      padding: 5px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav ul li a:hover {
+      border-bottom-color: #2874f0;
+    }
+
+    .orders {
+      padding: 20px;
+    }
+
+    .order {
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .order-header {
+      margin-bottom: 10px;
+    }
+
+    .order-header h2 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .order-header p {
+      margin: 0;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .product-image {
+      float: left;
+      margin-right: 20px;
+    }
+
+    .product-image img {
+      width: 100px;
+    }
+
+    .product-info {
+      overflow: hidden;
+    }
+
+    .product-info h3 {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .product-info p {
+      margin: 5px 0;
+      font-size: 14px;
+      color: #555;
+    }
+
+    footer {
+      background-color: #f1f3f6;
+      text-align: center;
+      padding: 10px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My Orders</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#">All Orders</a></li>
+      <li><a href="#">Pending</a></li>
+      <li><a href="#">Delivered</a></li>
+      <li><a href="#">Cancelled</a></li>
+    </ul>
+  </nav>
+
+  <section class="orders">
+    <div class="order">
+      <div class="order-header">
+        <h2>Order ID: 123456789</h2>
+        <p>Order Date: 2023-06-24</p>
+      </div>
+      <div class="order-details">
+        <div class="product-image">
+          <img src="product1.jpg" alt="Product 1">
+        </div>
+        <div class="product-info">
+          <h3>Product Name</h3>
+          <p>Price: $99.99</p>
+          <p>Status: Delivered</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add more order entries here -->
+  </section>
+
+  <footer>
+    <p>&copy; 2023 Flipkart. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Internal JavaScript
+    // Add your custom JavaScript code here if needed
+  </script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myaccount</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/myAccount.css">
+
+</head>
+<body>
+  
+     <div id="main">
+   <a href="/loggedIndex">   <button id="back">Back</button> </a>
+        <div id="left">
+            <div id="upbox">
+                    <div id="imgbox"> <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt=""> </div>
+                 <h3><%= user.Name %></h3>
+               
+            </div>
+            <div id="midbox">
+                <div id="order">
+                    <i class="ri-arrow-up-circle-fill"></i>
+                    <h3> <a href="/myOrders" style="text-decoration:none; color:black;"> MY ORDER'S  </a></h3>
+                    <i class="ri-skip-right-line"></i>
+                </div>
+                <div id="account">
+                    <h3>ACCOUNT SETTINGS</h3>
+                    <h4 class="a"> Profile Information </h4>
+
+                    <div class="addnewproduct">
+                      <h3>BE A SELLER</h3>
+                      <a href="/addnewpro"> <h4> Add Your Products</h4></a>
+                    </div>
+
+                 
+                    <h4 class="c"> PAN Card Information</h4>
+                </div>
+                <div id="payment">
+                    <div id="rap"> 
+                      <h3>PAYMENTS</h3>
+                       <i class="ri-bank-card-fill"></i>
+                    </div>
+                    <h4 class="m">Gift Cards₹0</h4>
+                    <h4 class="n">Saved UPI</h4>
+                    <h4 class="o"> Saved Cards</h4>
+                </div>
+                <div id="others">
+                    <h3>OTHERS</h3>
+                    <h4 class="w"> My Coupons</h4>
+                    <h4 class="x">My Reviews & Ratings</h4>
+                    <h4 class="y"> All Notifications</h4>
+                    <h4 class="z">  My Wishlist</h4>
+                </div>
+                
+            </div>
+            <div id="bottombox">
+                <i class="ri-logout-circle-line"></i>
+                <form action="/logout" method="POST">
+                    <button class="logoutbtn"><h3>LOGOUT</h3></button>
+                  </form>
+              
+                
+            </div>
+        </div>
+        <div id="right">
+            <button class="editbtn" id="showButton">Edit Profile</button>
+
+
+
+<!-- profile code here  -->
+<!-- <div class="p-container">
+    <div class="p-info">
+      <div class="p-image">
+        <img src="profile-image.jpg" alt="Profile Image">
+      </div>
+      <div class="p-details">
+        <h2>Name</h2>
+        <p>Email</p>
+        <p>Contact Number</p>
+        <p>City</p>
+        <p>Postal Code</p>
+        <p>Address Line 1</p>
+        <p>Country</p>
+        <p>State</p>
+      </div>
+    </div>
+  </div>
+   -->
+
+<!-- profile code ends here  -->
+
+
+
+
+
+
+
+
+             <form action="/editProfile" id="myForm" method="POST" >
+            <div class="form-container">
+
+
+                <div class="form-left">
+                    <label for="address">Profile Information:</label>
+
+                  <label for="name">Name:</label>
+                  <input type="text" id="name" name="name"  placeholder="<%= user.Name %>"  >
+            
+                  <label for="email">Email:</label>
+                  <input type="email" id="email" name="email"  placeholder="<%= user.Email %>"  >
+            
+                  <label for="contact">Contact Number:</label>
+                  <input  id="contact" name="contact"  placeholder="<%= user.number %>" style="font-size:26px;" >
+                  <label for="country">Country:</label>
+                  <input type="text" id="country" name="country" placeholder="<%= user.country %>"  >
+                </div>
+                <div class="form-right">
+                 
+                
+
+
+                    <label for="address">Address:</label>
+
+                    <label for="city">City:</label>
+                  <input type="text" id="city" name="city" placeholder="<%= user.city %>" >
+            
+                  <label for="state">State:</label>
+                  <input type="text" id="state" name="state" placeholder="<%= user.state %>"  >
+            
+                  <label for="line1">Address Line 1:</label>
+                  <input type="text" id="line1" name="line1" placeholder="<%= user.line1 %>"  >
+            
+                  <label for="line2">postal code:</label>
+                  <input type="text" id="line2" placeholder="<%= user.postal_code %>"  name="postal_code">
+            
+                  <button class="editbtn" type="submit" id="hiddenButton" style="display: none; ; top: 80%;">Save Changes</button>
+                  <img class="profileimg" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+             
+                </div>
+              
+            
+            </div>
+           </form> 
+            
+        </div> 
+     <div>   
+<script>
+
+function makeFormReadOnly() {
+  var form = document.getElementById('myForm');
+  var elements = form.elements;
+
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].readOnly = true;
+
+  }
+}
+makeFormReadOnly();
+
+document.getElementById("showButton").addEventListener("click", function() {
+
+
+  document.getElementById("showButton").style.visibility = "hidden"
+    document.getElementById("hiddenButton").style.display = "block";
+    var form = document.getElementById('myForm');
+
+
+  var elements = form.elements;
+
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].readOnly = false;
+    // elements[i].placeholder.style = "color:blue;"; 
+  
+  }
+  
+});
+  </script>
+</body>
+</html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Orders</title>
+  <style>
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+}
+
+#main{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #dadada;
+}
+#back{
+  position: absolute;
+  width: 5vw;
+  top: 6px;
+  left: 11px;
+  
+}
+
+#upbox{
+    position: relative;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 9vh;
+    left: 8vw;
+    width: 23vw;
+    height: 7vh;
+    background-color: #fff;
+}
+#imgbox{
+    width: 6vh;
+    height: 6vh;
+    background-color: rgb(231, 226, 118);
+    border-radius: 50%;
+    margin-left: 30px;
+}
+#upbox>h3{
+    font-size: 30px;
+    margin-left: 15px;
+}
+#midbox{
+    position: relative;
+    position: absolute;
+    top: 17vh;
+    left: 8vw;
+    width: 23vw;
+    height: 75vh;
+    background-color: #fff;
+    font-family: Gilroy;
+}
+#order{
+    display: flex;
+    align-items: center;
+    width: 23vw;
+    height: 6vh;
+    border-bottom: 2px solid #dadada;
+}
+.ri-arrow-up-circle-fill{
+    font-size: 27px;
+    margin-left: 20px;
+    
+}
+.ri-skip-right-line{
+    font-size: 20px;
+    margin-left: 90px;
+}
+#order>h3{
+    font-size: 18px;
+    margin-left: 12px;
+    font-family: "Gilroy";
+    font-weight: 500;
+
+}
+#account{
+    position: relative;
+     position: absolute;
+     width: 100%;
+     height: 30%;
+     font-family: "Gilroy";
+     border-bottom: 2px solid #dadada;
+     /* background-color: aqua; */
+}
+#account>h3{
+     position: absolute;
+     top: 5%;
+     left: 15%;
+     font-family: "Gilroy";
+     font-weight: 500;
+}
+ .a{
+    margin-top: 15%;
+    margin-left: 15%;
+    font-family: "Gilroy";
+    font-weight: 500;
+}
+ .b{
+    margin-top: 6%;
+    margin-left: 15%;
+    font-family: "Gilroy";
+    font-weight: 500;
+}
+ .c{
+    margin-top: 6%;
+    margin-left: 15%;
+    font-family: "Gilroy";
+    font-weight: 500;
+}
+
+
+#payment{
+    
+    position: relative;
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    height: 30%;
+    font-family: "Gilroy";
+    /* background-color: rgb(107, 42, 213); */
+    border-bottom: 2px solid #dadada;
+}
+#rap{
+    display: flex;
+    position: absolute;
+    left: 15%;
+    top: 5%;
+
+}
+.ri-bank-card-fill{
+    position: absolute;
+    font-size: 20px;
+    top: 10%;
+    margin-left: 210px;
+}
+
+#rap>h3{
+    /* position: absolute;
+    top: 5%;
+    left: 15%; */
+    font-family: "Gilroy";
+    font-weight: 400;
+    
+
+}
+.m{
+   margin-top: 15%;
+   margin-left: 15%;
+   font-family: "Gilroy";
+   font-weight: 500;
+}
+.n{
+   margin-top: 6%;
+   margin-left: 15%;
+   font-family: "Gilroy";
+   font-weight: 500;
+}
+.o{
+   margin-top: 6%;
+   margin-left: 15%;
+   font-family: "Gilroy";
+   font-weight: 500;
+}
+
+#others{
+    position: absolute;
+    bottom: 0%;
+    width: 100%;
+    height: 30%;
+
+        /* background-color: aqua; */
+}
+#others>h3{
+    position: absolute;
+    top: 5%;
+    left: 15%;
+    font-family: "Gilroy";
+    font-weight: 500;
+}
+.w{
+   margin-top: 12%;
+   margin-left: 15%;
+   font-family: "Gilroy";
+   font-weight: 500;
+}
+.x{
+   margin-top: 4%;
+   margin-left: 15%;
+   font-family: "Gilroy";
+   font-weight: 500;
+}
+.y{
+   margin-top: 4%;
+   margin-left: 15%;
+   font-family: "Gilroy";
+   font-weight: 500;
+}
+.z{
+   margin-top: 4%;
+   margin-left: 15%;
+   font-family: "Gilroy";
+   font-weight: 500;
+}
+
+
+
+#bottombox{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 1vh;
+    left: 8vw;
+    width: 23vw;
+    height: 6vh;
+    background-color: #fff;
+}
+.ri-logout-circle-line{
+    font-size: 27px;
+    margin-left: 20px;
+    
+}
+
+#bottombox>h3{
+    font-size: 18px;
+    margin-left: 12px;
+    font-family: "Gilroy";
+    font-weight: 500;
+
+}
+#right{
+    position: relative;
+    position: absolute;
+    bottom: 1vh;
+    right: 8vw;
+    width: 60vw;
+    height: 90vh;
+    background-color: #fff;
+}
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+  }
+  
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+
+.orderbox{
+     overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    position: absolute;
+    left: 0vw;
+    top: 15vh;
+    /* height: 30vh; */
+    width: 100%;
+    /* background-color: #d08080; */
+}
+#proimg{
+    position: relative;
+    height: 25vh;
+    width: 25%;
+    background-color: #535151;
+    
+   
+}
+#proimg > img{
+    height: 25vh;
+    width: 100%;
+    object-fit: cover;
+    background-size: cover;
+}
+#prodetails{
+    
+    display: flex;
+    margin-left: 20px;
+    height: 25vh;
+    width: 70%;
+    background-color: #d2d2d2;
+
+}
+#prodetails>#aaa{
+    margin-top: 10px;
+    margin-left: 10px;
+      display: grid;
+}
+#prodetails>#bbb{
+    margin-top: 10px;
+    margin-left: 30px;
+    display: grid;
+    font-weight: 200;
+   
+}
+#prodetails>button{
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    height: 5vh;
+    width: 5vw;
+    background-color: aquamarine;
+
+}
+  </style>
+
+<link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="/public/stylesheets/">
+</head>
+    
+<body>
+  
+  <div id="main">
+
+    <a href="/myAccount">   <button id="back">Back</button> </a>
+    <div id="left">
+        <div id="upbox">
+                <div id="imgbox"></div>
+             <h3>Hello</h3>
+           
+        </div>
+        <div id="midbox">
+            <div id="order">
+                <i class="ri-arrow-up-circle-fill"></i>
+                <h3>MY ORDER'S</h3>
+                <i class="ri-skip-right-line"></i>
+            </div>
+            <div id="account">
+                <h3>ACCOUNT SETTINGS</h3>
+                <h4 class="a"> Profile Information </h4>
+                <h4 class="b"> Manage Addresses</h4>
+                <h4 class="c"> PAN Card Information</h4>
+            </div>
+            <div id="payment">
+                <div id="rap"> 
+                <i class="ri-bank-card-fill"></i>
+                <h3>PAYMENTS</h3>
+                </div>
+                <h4 class="m">Gift Cards₹0</h4>
+                <h4 class="n">Saved UPI</h4>
+                <h4 class="o"> Saved Cards</h4>
+            </div>
+            <div id="others">
+                <h3>OTHERS</h3>
+                <h4 class="w"> My Coupons</h4>
+                <h4 class="x">My Reviews & Ratings</h4>
+                <h4 class="y"> All Notifications</h4>
+                <h4 class="z">  My Wishlist</h4>
+            </div>
+            
+        </div>
+        <div id="bottombox">
+            <i class="ri-logout-circle-line"></i>
+           <h3>LOGOUT</h3>
+        </div>
+    </div>
+    <div id="right">
+        <div class="container">
+            <h1>My Orders</h1>
+
+            <% for(i=0; i<orders.length; i++){ %>
+            <div class="orderbox">
+                <div id="proimg">
+                    <img src="/upload/<%= products[i].image1%>" alt="">
+                </div>
+                <div id="prodetails">
+                   <div id="aaa">
+                    <h3>Order-Id -  </h3> 
+                    <h3>Customer-Name -  </h3>
+                    <h3> Seller-Name- </h3>  
+                    <h3>Quantity - </h3> 
+                    <h3>Address- </h3>
+                   </div>
+
+                    <div id="bbb">
+                        <h4> <%= orders[i]._id%> </h4>
+                        <h4> <%= customers.Name %></h4>
+                        <h4><%= sellers.Name %></h4>
+                        <h4>1</h4>
+                        </h3><h4> <%= customers.city %> - <%= customers.postal_code %> </h4>
+                       
+                    </div>
+                    <button>Cancel Order</button>
+            </div>
+            </div>
+            <%}%>
+      
+          </div>
+        </div>
+    </div>
+ </div> 
+  
+     
+
+</body>
+</html>

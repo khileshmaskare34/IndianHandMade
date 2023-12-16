@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Become a seller</title>
+  <link rel="stylesheet" href="./stylesheets/addnewpro.css">
+
+</head>
+<style>
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.hidden {
+  display: none;
+}
+
+#promotion-container {
+  text-align: center;
+}
+
+#promotion {
+  display: inline-block;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transform: scale(0);
+  opacity: 0;
+  animation: promo-animation 1s forwards;
+}
+
+@keyframes promo-animation {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+#promotion h2 {
+  font-size: 24px;
+  color: #333;
+  margin: 10px 0;
+}
+
+#promotion p {
+  font-size: 16px;
+  color: #666;
+}
+
+#close-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #ffcc00;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+
+#close-button:hover {
+  background-color: #ffa500;
+}
+ #main >img{
+  object-fit: cover;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+
+ }
+ 
+ 
+
+
+</style>
+<body>
+
+  <div id="main">
+    <!-- <video autoplay loop muted src="./video/video.mp4"></video> -->
+    <!-- <img src="https://d3o59fu9acgbkr.cloudfront.net/jrc2021/home/master/2023/7/5/jrc-desktop-banner-7-5-2023-12-37-09-PM.jpg" alt=""> -->
+    <img src="https://d3o59fu9acgbkr.cloudfront.net/jrc2021/collection/desktop/manchaha.jpg" alt="">
+ 
+  <div id="card">
+    <div id="left">
+      <form action="/newProduct" name="myForm" method="post" enctype="multipart/form-data">  
+      <h2  id="B">BECOME A SELLER</h2>
+      <h3  id="N"  name="title" >Title     :-  </h3>
+      <h3 id="E" name="description">Description     :-</h3>
+      <h3 id="Num" name="price">price    :-</h3>
+      <h3 id="A" name="cataogry">catagory  :-</h3>
+      <h3 id="F" >images      :-  
+        <!-- <input required  type="file" class="hu" style="margin-top: 10rem;" name="testimage"> -->
+      </h3>
+      <h3 id="F1"  >  image1      :-</h3>
+      <h3 id="F2" >   image2      :-</h3>
+      <h3 id="F3" > image3        :-</h3>
+      <h3 id="F4" > image4       :-</h3>
+
+    <input type="string" name="seller_id" value="<%= user[0]._id %>" style="visibility:hidden;">
+        
+        <input required id="onee" class="fom" name="title" placeholder="title" >
+        <input required id="two" class="fom" name="description" placeholder="description" >
+        <input required id="three" class="fom" name="price"  placeholder="price">
+        <label>
+          <input required id="four" class="fom" list="category" name="catagory"  placeholder="catagory"> 
+          <datalist id="four">
+            <option value="carpets">
+            <option value="bags">
+         </datalist>
+
+        </label>
+       
+          <label><input type="text" name="city" list="citynames"    placeholder="City Name / Country">
+<datalist id="citynames">
+<option value="Mumbai">
+<option value="Bhopal">
+<option value="Nagpur">
+<option value="Indor">
+<option value="Jablpur">
+<option value="Chindwadha">
+<option value="Harda">
+<option value="Rani Kamlapati">
+<option value="Ujjain">
+<option value="Dehli">
+</datalist>
+        </label> 
+        <input required style="margin-top: 3rem;" type="file" class="hu" name="testimage">
+        <input required style="margin-top: 6rem;"  type="file" class="hu" style="margin-top: 10rem;" name="testimage">
+        <input required style="margin-top: 9rem;" type="file" class="hu" style="margin-top: 15rem;" name="testimage">
+        <input required style="margin-top: 12rem;"  type="file" class="hu" style="margin-top: 17rem;" name="testimage">
+        
+       
+      
+  
+        <input   id="hi" type="submit">2
+        
+
+      </form>
+      <!-- <button id="promo-button">Click for Promotion</button> -->
+<div id="promotion-container" class="hidden">
+  <div id="promotion" class="promo-animation">
+    <h2>Hey , <%= user.Name%></h2>
+    <p>Product Saved </p>
+    <button id="close-button">Close</button>
+  </div>
+</div>
+    </div>
+   
+    
+  </div>
+  </div>
+  <!-- <script src="./javascripts/seller.js"></script> -->
+  <script>
+
+    var promoButton = document.getElementById('hi');
+    var closeButton = document.getElementById('close-button');
+    var promotionContainer = document.getElementById('promotion-container');
+    
+    promoButton.addEventListener('click', function() {
+      promotionContainer.classList.toggle('hidden');
+    });
+    
+    closeButton.addEventListener('click', function() {
+      promotionContainer.classList.add('hidden');
+    });
+  
+  </script>
+</body>
+</html>
