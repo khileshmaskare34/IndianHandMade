@@ -249,7 +249,7 @@
     letter-spacing: 0.1rem;
   }
   .user_options-forms .forms_field:not(:last-of-type) {
-    margin-bottom: 20px;
+    margin-bottom: 2px;
   }
   .user_options-forms .forms_field-input {
     width: 100%;
@@ -258,13 +258,13 @@
     font-family: "Montserrat", sans-serif;
     font-size: 1rem;
     font-weight: 300;
-    color: gray;
+    color: rgb(81, 80, 80);
     letter-spacing: 0.1rem;
     -webkit-transition: border-color 0.2s ease-in-out;
     transition: border-color 0.2s ease-in-out;
   }
   .user_options-forms .forms_field-input:focus {
-    border-color: gray;
+    border-color: rgb(36, 35, 35);
   }
   .user_options-forms .forms_buttons {
     display: -webkit-box;
