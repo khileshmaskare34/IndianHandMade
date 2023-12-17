@@ -279,47 +279,63 @@ video {
 .box-c {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: 2vh 1vw;
+  /* padding: 2vh 1vw; */
   position: relative;
-  margin-top: 2vh;
+  /* margin-top: 2vh; */
   width: 17vw;
   height: 45vh;
-  /* background-color: rgb(228, 221, 221); */
+  border: #0a0a0a solid 1px;
 }
 .box-c .img-box {
   text-align: center;
   width: 100%;
-  height: 90%;
-  
-  /* background-color: #181818; */
+  height: 70%;
 }
-.box-c img:hover {
-  width: 15vw;
-  height: 37vh;
-  cursor: pointer;
-  transition: ease-in-out 0.2s;
-  
-}
-
-
 .img-box img {
   width: 97%;
   height: 95%;
   object-fit: cover;
   background-size: cover;
 }
-.box-c h3 {
+.box-c img:hover {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transition: ease-in-out 0.4s;
+  
+}
+
+
+.box-c h1 {
+  position: absolute;
+  left: 2px;
+  bottom:8vh;
   font-size: 1rem;
   font-weight: 400;
+
 }
 .box-c h5 {
+  position: absolute;
+  left: 2px;
+  bottom: 6vh;
   font-weight: 400;
 }
 .box-c h2 {
+  position: absolute;
+  left: 2px;
+  bottom: 2px;
   font-size: 1rem;
   font-weight: 400;
+}
+.box_c i{
+  height: 4px;
+  width: 4px;
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  border: #0a0a0a;
+  z-index: 9999;
 }
 .aboutpage1{
   display: flex;

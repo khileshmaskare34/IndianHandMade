@@ -6,7 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>InidanRugs</title>
+
   <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0/fonts/remixicon.min.css" rel="stylesheet">
   <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kursor@0.1.6/dist/kursor.min.css" /> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
   <link rel="stylesheet" href="./stylesheets/style.css" />
@@ -141,9 +143,10 @@
           <div class="img-box">
           <img src="/upload/<%= bags[i].image1 %>" alt="" />
           </div>
-          <h3><%= bags[i].catagory %></h3>
+          <h1><%= bags[i].catagory %></h1>
           <h5><%= bags[i].title %></h5>
           <h2>Rs - <%= bags[i].price %></h2>
+          <i class="ri-heart-3-line"></i>
         </div>
       <% } %>
       
