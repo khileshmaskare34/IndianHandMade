@@ -2,7 +2,7 @@ const register = require('../Model/registerScheema');
 const product = require('../Model/product');
 const order = require('../Model/orderdProductScheema');
 const jwt = require('jsonwebtoken');
-
+const PUBLISHABLE_KEY = process.env.PUBLISHABLE_KEY
 
 exports.Home = async (req, res, next) =>{
   var carpets = await product.find({ catagory: 'carpets' });
