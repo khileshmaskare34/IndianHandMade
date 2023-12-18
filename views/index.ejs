@@ -86,11 +86,7 @@
               <i class="ri-shopping-cart-2-line"></i>
               <p>Vew Producuts</p>
             </div>
-            <!-- <div class="nav-link-i">
-              <i class="ri-shopping-cart-2-line"></i>
-              <p>Cart</p>
-            </div> -->
-            
+           
           </div>
 
           <div class="login-btn"><a href="/login">Login</a></div>
@@ -103,25 +99,10 @@
 
         <a id="see" href="#container">See Our Collection</a>
 
-       
-        <!-- <button id="logbtn2" style="position:fixed; "><a href="/logout" method="post" style="text-decoration: none" target="_blank"> Logout</a> </button> -->
-      
-          <!-- <a href="/addnewpro"><button class="btn btn-outline-danger"  type="submit" >addnewpro</button></a> -->
-       
-
       </div>
     </div>
 
-    <div id="container">
-      <!-- <div class="box-c">
-          <div class="img-box"></div>
-          <h3>carpets</h3>
-          <h5>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum, nam the right youth of the right area!</h5>
-          <h6>5x8 - 10x8ft</h6>
-          <h2>Price - 50,000</h2>
-      </div> -->
-   
-         
+    <div id="container">   
       <% for(var i = 0; i < carpets.length;i++){%>
         <!-- <div onclick="window.open('/price/')" class="box-c"> -->
 
@@ -151,119 +132,7 @@
       <% } %>
       
       
-      <!-- <div class="nav-container">
-
-        <div onclick="javascript:window.location.href='/'" class="logo"></div>
-        <a href="/menu">
-          <div class="menu">
-            <h3>MENU</h3>
-          </div>
-        </a>
-      </div>
-      <div class="swiper">
-        <h1 id="collection">Our Collections</h1>
-        <div class="swiper-wrapper">
-        
-          <% for(var i = 0; i < carpets.length; i++) {%>
-            <div id="1" onclick="javascript:window.location.href='/price/<%= carpets[i]._id %>'" style="box-shadow: 0 18px 18px -18px black"
-            class="swiper-slide">
-            <img
-              src="/upload/<%= carpets[i].image1 %>" alt="" />
-            <h3><%= carpets[i].category %></h3>
-            <h5><%= carpets[i].title %></h5>
-            <h6> 5x8 - 10x8ft</h6>
-          </div>
-          <% } %>
-
-
-
-
-
-
-
-
-
-
-        
-           <% for(var i = 0; i < carpets.length; i++) {%>
-            <div id="1" onclick="javascript:window.location.href='/price/<%= carpets[i]._id %>'" style="box-shadow: 0 18px 18px -18px black"
-            class="swiper-slide">
-            <img
-              src="/upload/<%= carpets[i].image %>" alt="" />
-            <h3><%= carpets[i].category %></h3>
-            <h5><%= carpets[i].title %></h5>
-            <h6> 5x8 - 10x8ft</h6>
-          </div>
-          <% } %> 
- 
-
-
-
-
-
-
-
-
-
-
-         
-        </div> 
-        <div class="swiper-wrapper " id="downS">
-        
-           <% for(var i = 0; i < bags.length; i++) {%>
-            <div id="1" onclick="javascript:window.location.href='/price/<%= bags[i]._id %>'" style="box-shadow: 0 18px 18px -18px black"
-            class="swiper-slide">
-            <img
-              src="/upload/<%= bags[i].image1 %>" alt="" />
-            <h3><%= bags[i].category %></h3>
-            <h5><%= bags[i].title %></h5>
-            <h6> 5x8 - 10x8ft</h6>
-          </div>
-          <% } %> 
-           
-        <div class="drag">
-          <h6>Drag Here..</h6>
-        </div>
-        <div class="footer">
-          <div class="made">
-            <div class="made-in-india">
-            </div> <span></span>
-            <div class="text">
-              <h5>MADE IN INDIA</h5>
-            </div>
-          </div>
-          <div class="second-logo">
-
-          </div>
-        </div>
-
-      </div>
-      </div>
-      <div class="div2">
-      <div class="left">
-        <h1>Embrace the
-          spirit of India</h1>
-        <p>Our Mission</p>
-        <h3>Our Mission
-          Every purchase
-          has a purpose</h3>
-        <h5 style="max-width: 70%;">
-          We have direct partnerships with over 320 Indian artisans and over 700 indirectly. As a social enterprise
-          that seeks to offer a fair-trade platform, our primary purpose is to support handicraft workers. With each
-          purchase you make, you can help make a differnce. </h5>
-        <a id="back" href="#container">Back to our Collection</a>
-      </div>
-      <div class="right"></div>
-      </div>
-      <div class="footer-div">
-      <div class="footer-overlay">
-        <section>email</section>
-        <section>About us</section>
-        <section>Social media handle</section>
-        <section>contact</section>
-      </div>
-      <video autoplay loop muted src="./video/video.mp4"></video>
-      </div> -->
+      
   </div>
 
   <div class="aboutpage1">
