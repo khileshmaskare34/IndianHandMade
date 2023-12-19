@@ -7,105 +7,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>InidanRugs</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0/fonts/remixicon.min.css" rel="stylesheet">
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kursor@0.1.6/dist/kursor.min.css" /> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
   <link rel="stylesheet" href="./stylesheets/style.css" />
 </head>
-<style>
-  .nav-link-i p {
-  font-family: Arial, sans-serif;
-  font-size: 18px;
-  color: white;
-  padding: 10px;
-  /* border: 1px solid #ccc;
-  border-radius: 5px; */
-  /* background-color: #f8f8f8; */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease-in-out;
-}
 
-.nav-link-i p:hover {
-  background-color: #eaeaea;
-  color:black;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transform: scale(1.02);
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.nav-link-i p.animated {
-  animation: fadeIn 1s ease-in-out;
-}
-
-
-
-
-</style>
 <body>
   <div class="body">
     <div id="loader"></div>
-    <div id="div1">
-    
-     <!-- <button id="sinupbtn">Sing up</button> -->
-      <div class="video1">
-
-        <video autoplay loop muted src="./video/video.mp4"></video>
-
-      </div>
-       
-
-      <div class="overlay1">
-
-        <div class="nav">
-          <div class="overlay1-nav"></div>
-          <div class="nav-search">
-            <form action="" id="first-form">
-              <input type="text" placeholder="Search here">
-              <i class="ri-search-line"></i>
-            </form>
-          </div>
-          <div class="nav-link">
-            <div class="nav-link-i">
-              <i class="ri-map-pin-line"></i> 
-              <p>Stores</p>
-            </div>
-            <div class="nav-link-i">
-              <i class="ri-account-circle-line"></i>
-              <p>set profile</p>
-            </div>
-            <div class="nav-link-i">
-              <i class="ri-shopping-cart-2-line"></i>
-              <p>Vew Producuts</p>
-            </div>
-           
-          </div>
-
-          <div class="login-btn"><a href="/login">Login</a></div>
-        </div>
-
-
-        <h1 id="rugs" style="font-size: 6rem; color: rgb(201,162,92);">INDIAN HANDMADE
-        </h1>
-               
-        <h4 style="color: #9d9d9d; font-size: 2rem;">The Art of Handwoven Carpets </h4>
-
-        <a id="see" href="#container">See Our Collection</a>
-
-      </div>
-    </div>
+    <%- include('nav.ejs') -%>
+    <%- include('home.ejs') -%>
+   
 
     <div id="container">   
       <% for(var i = 0; i < carpets.length;i++){%>
-        <!-- <div onclick="window.open('/price/')" class="box-c"> -->
+        
 
           <div id="1" onclick="javascript:window.location.href='/price/<%= carpets[i]._id %>'"class="box-c">
 
@@ -117,6 +33,9 @@
           <h2>Rs - <%= carpets[i].price %></h2>
         </div>
       <% } %>
+
+
+      
       <% for(var i = 0; i < bags.length;i++){%>
         <!-- <div onclick="window.open('/price/')" class="box-c"> -->
 

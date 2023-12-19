@@ -44,29 +44,6 @@ body::-webkit-scrollbar {
   z-index: 999999;
 }
 
-#div1 {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-.login-btn {
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1rem;
-  border: 1px solid rgb(255, 255, 255);
-  width: 18vh;
-  height: 4vh;
-  /* background-color: #ffffff; */
-  color: rgb(255, 255, 255);
-  border-radius: 20px;
-  /* z-index: 99; */
-}
-.login-btn > a {
-  text-decoration: none;
-  color: white;
-}
 
 .myAccount{
   display: flex;
@@ -76,63 +53,81 @@ body::-webkit-scrollbar {
   text-decoration: none;
   color: #fff;
 }
-.overlay1 {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* text-shadow: 10px 8px 6px #000000c1; */
-  z-index: 99;
-  color: #fff;
-  background-color: #00000097;
-  /* font: 900 2rem sans-serif; */
-  text-align: center;
-  animation-name: fade-in;
-  animation-duration: 7s;
-}
 
-.overlay1 .nav {
-  padding-right: 2vw;
+/* ---------------------Nav Bar code---------------- */
+.nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 15vh;
-  background-color: rgba(236, 236, 236, 0);
-}
-.nav .nav-link {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 20%;
-  height: 40%;
-  /* background-color: blue; */
-}
-
-.nav-link .nav-link-i {
-  width: 7vw;
-  height: 3;
-}
-.nav-link-i > i {
-  font-size: 1.5rem;
-  font-weight: 100;
-}
-.nav-link-i > p {
-  width: 100%;
-  font-size: 0.6rem;
+  /* height: 15vh;  */
+  background-color: #f8f8f8; 
+  padding: 0 20px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .overlay1-nav {
-  z-index: 999999999;
-  margin: 10px;
-  width: 15%;
-  height: 100%;
-  background-image: url(../images/logoIHM1.png);
   background-size: cover;
+  object-fit: cover;
 }
+.overlay1-nav>img{
+  width: 150px;
+  height: 70px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 3vw;
+  align-items: center;
+}
+
+.nav-link {
+  margin-right: 20px; 
+}
+
+.nav-link-i {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav-link-i > i {
+  font-size: 1.5rem;
+}
+
+.nav-link-i > span {
+  margin-top: 5px; 
+  font-size: 0.8rem;
+}
+
+.login-btn a {
+  margin-left: 5vw;
+  padding: 5px 20px;
+  color: #000000; 
+  text-decoration: none;
+  border-radius: 5px;
+  border: 5px solid rgb(255, 174, 0);
+  transition: background-color 0.3s ease;
+}
+
+.login-btn a:hover {
+  background-color: #2980b9; /* Darker blue on hover */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .nav .nav-search {
   display: flex;
   justify-content: space-between;
@@ -170,12 +165,18 @@ body::-webkit-scrollbar {
   }
 }
 
+#div1 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+
 .video1 {
   background-size: cover;
   overflow-y: hidden;
   width: 100%;
   height: 100vh;
-  background-color: black;
 }
 
 video {
@@ -183,7 +184,40 @@ video {
   height: 100%;
   object-fit: fill;
 }
+#div1 .overlay{
+  padding: 2vh 2vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* background-color: rgb(212, 201, 201); */
+}
 
+.overlay input[type=text] {
+  float: right;
+  padding: 10px;
+  padding-right: 8vw;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+}
+.overlay>img{
+  width: 50vw;
+}
+form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.overlay i{
+  color: white;
+  font-size: 40px;
+}
 #see {
   font-size: 20px;
   padding: 10px;
@@ -287,7 +321,8 @@ video {
   /* margin-top: 2vh; */
   width: 17vw;
   height: 45vh;
-  border: #0a0a0a solid 1px;
+  /* border: #0a0a0a solid 1px; */
+  box-shadow: 0px 3px 5px rgb(169, 165, 165);
 }
 .box-c .img-box {
   text-align: center;
