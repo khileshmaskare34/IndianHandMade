@@ -162,4 +162,8 @@ router.post('/editProfile', async (req, res, next) => {
   res.redirect('/myAccount');
 });
 
+router.get('/about', function (req, res, next) {
+  res.render('about');
+});
+
 module.exports = router;

@@ -1,6 +1,6 @@
 @font-face {
   font-family: am;
-  src: url('/public/samarkan/Gilroy-Medium.ttf');
+  src: url('../samarkan/Gilroy-Medium.ttf');
 }
 * {
   margin: 0%;
@@ -10,6 +10,7 @@
 html,
 body {
   font-family: am;
+  
   width: 100%;
   height: 100%;
   background-color: rgb(232, 235, 193);
@@ -182,7 +183,7 @@ body {
 }
 #otharized i {
   color: blue;
-  animation: otharized 3s infinite linear;
+  animation: otharized 10s infinite linear;
 }
 @keyframes otharized {
   0% {
@@ -209,6 +210,7 @@ body {
   align-items: center;
   width: 10vw;
   height: 13vh;
+  border-radius: 20px;
   /* background-color: rgb(255, 34, 0); */
   border: 1px solid black;
 }
@@ -228,6 +230,11 @@ body {
   height: 100%;
   width: 100%;
   position: relative;
+}
+.logo{
+  padding-bottom: 20px;
+  width: 60%;
+  height: 4vh;
 }
 
 /* Zoom img comment */
