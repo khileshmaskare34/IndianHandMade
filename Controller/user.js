@@ -189,3 +189,19 @@ exports.paymentGty = async (req, res, next) => {
       res.send(err);
     });
 }
+
+exports.isLoggedIn = async (req, res, next) =>{
+  jwt.verify(
+    req.cookies.Token,
+    'mynameispulkitupadhyayfromharda',
+    (err, authData) => {
+      if (err) {
+        res.render('notLogin');
+      } else {
+        //   res.sendStatus(403);
+        next();
+        // res.clearCookie('Token');
+      }
+    }
+  );
+}

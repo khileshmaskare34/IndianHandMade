@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var multer = require('multer');
-// const register = require('../modules/registerScheema');
+const register = require('../Model/registerScheema');
 const jwt = require('jsonwebtoken');
 // const loggedInIndex = require('./../modules/loggedInIndex');
 // const product = require('./../modules/product');
@@ -10,7 +10,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const ObjectId = require('mongodb');
 const app = require('./../app');
-const { signIn, signOut, signUp, loggedInIndex, Home, paymentGty, priceId, myOrders } = require('../Controller/user');
+const { signIn, signOut, signUp, loggedInIndex, Home, paymentGty, priceId, myOrders, isLoggedIn } = require('../Controller/user');
 const { addItem, newProduct } = require('../Controller/seller');
 
 
@@ -48,13 +48,13 @@ router.get('/login', (req, res, next) => {
 });
 
 router.get('/', Home);
-router.post('/price/payment', loggedInIndex, paymentGty);
-router.get('/loggedIndex', loggedInIndex, loggedInIndex);
+router.post('/price/payment', isLoggedIn, paymentGty);
+router.get('/loggedIndex', isLoggedIn, loggedInIndex);
 router.post('/register', signUp);
 router.post('/newProduct', upload.array('testimage'), newProduct);
-router.get('/addnewpro', loggedInIndex, addItem);
+router.get('/addnewpro', isLoggedIn, addItem);
 router.post('/login', signIn);
-router.post('/logout', loggedInIndex, signOut);
+router.post('/logout', isLoggedIn, signOut);
 router.get(`/price/:id`, priceId);
 
 router.get('/register', function (req, res, next) {
@@ -63,18 +63,18 @@ router.get('/register', function (req, res, next) {
 router.get('/submit', function (req, res, next) {
   res.render('submit');
 });
-router.get('/myOrders', loggedInIndex, myOrders);
+router.get('/myOrders', isLoggedIn, myOrders);
 
 router.post('/deletorder', async (req, res, next) => {
-  console.log(req.body);
+  // console.log(req.body);
   let orderId = req.body.order_id;
-  console.log(orderId);
+  // console.log(orderId);
   await order.deleteOne({ _id: orderId });
 
   res.redirect('/myOrders');
 });
 
-router.get('/myAccount', loggedInIndex, async (req, res, next) => {
+router.get('/myAccount', isLoggedIn, async (req, res, next) => {
   var email = req.cookies.user_email;
   var user = await register.findOne({ Email: email });
 

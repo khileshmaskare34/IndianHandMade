@@ -51,7 +51,7 @@ body::-webkit-scrollbar {
 }
 .myAccount>a{
   text-decoration: none;
-  color: #fff;
+  color: #000000;
 }
 
 /* ---------------------Nav Bar code---------------- */
@@ -376,18 +376,18 @@ form{
 }
 .aboutpage1{
   display: flex;
-  height: 100vh;
+  /* height: 100vh; */
   width: 100vw;
  
 }
 .aboutpage1 .apleft{
      width: 70vw;
-     height: 100%;
+     /* height: 100%; */
      background-color: #ffffff;
 }
 .aboutpage1 .apright{
   width: 30vw;
-  height: 100%;
+  /* height: 100%; */
   background-color: #e2e4e9;
 }
 .apleft{
@@ -441,240 +441,6 @@ align-items: center;
   background-size: cover;
 }
 
-/* .nav-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  height: 10%;
-  padding-right: 15px;
-}
-
-.logo {
-  margin-left: 10px;
-  margin-top: 20px;
-  width: 10%;
-  height: 100%;
-  background-image: url(../images/rugs.png);
-  background-size: cover;
-  background-position: center;
-}
-
-.menu h3 {
-  text-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-  font-size: 1.2em;
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  color: #000;
-}
-
-#collection {
-  margin-left: 40%;
-  width: 13.5ch;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 4px solid #212121;
-  animation: cursor 1s step-start infinite, text 5s steps(18) alternate infinite;
-}
-
-@keyframes cursor {
-  0%,
-  100% {
-    border-color: #212121;
-  }
-}
-
-@keyframes text {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: 13.5ch;
-  }
-}
-
-.swiper {
-  width: 98%;
-  height: 170%;
-}
-
-.swiper-wrapper {
-  position: absolute;
-  top: 1%;
-  width: 200%;
-  animation-name: scroller;
-  animation-duration: 120s;
-  animation-fill-mode: forwards;
-  animation-iteration-count: infinite;
-}
-#downS {
-  position: absolute;
-  top: 21%;
-  width: 200%;
-  animation-name: scroller;
-  animation-duration: infinite;
-  animation-fill-mode: backwards;
-  animation-iteration-count: infinite;
-}
-
-@keyframes scroller {
-  0% {
-    left: 0%;
-  }
-  100% {
-    left: -100%;
-  }
-}
-
-.swiper-wrapper {
-  display: flex;
-  flex-shrink: 0;
-  overflow-x: auto;
-}
-#downS {
-  display: flex;
-  flex-shrink: 0;
-  overflow-x: auto;
-}
-
-.swiper-wrapper::-webkit-scrollbar {
-  display: none;
-}
-#downS::-webkit-scrollbar {
-  display: none;
-}
-body::-webkit-scrollbar {
-  display: none;
-}
-
-.swiper-slide {
-  position: relative;
-  width: 300px;
-  height: 400px;
-  text-align: center;
-  font-size: 18px;
-  perspective: 200px;
-  transition: ease-in-out 0.1s;
-  margin-left: 30px;
-}
-
-img {
-  height: 250px;
-  width: 400px;
-}
-
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  backface-visibility: hidden;
-  position: absolute;
-  transition: transform 0300ms ease-out;
-  box-shadow: 18px 18px 18px -18px black;
-  transition: 0.6s;
-  transform: rotatex(60deg) translatey(-200px) translatez(-100px);
-}
-
-.swiper-slide img:hover {
-  position: absolute;
-  transform: rotatex(0deg);
-  transform: rotatez(0deg);
-  transition: ease-in-out 0.6s;
-  cursor: pointer;
-}
-
-.swiper-slide:hover {
-  background-color: transparent;
-}
-
-.swiper-slide img {
-  transition: 1s ease-out;
-}
-.swiper-slide h3 {
-  position: absolute;
-  top: 15%;
-  left: 15%;
-  color: #000;
-  mix-blend-mode: difference;
-}
-.swiper-slide h5 {
-  position: absolute;
-  bottom: 12%;
-  left: 50%;
-  transform: translate(-50%, 0);
-  color: #000;
-  mix-blend-mode: difference;
-}
-.swiper-slide h6 {
-  position: absolute;
-  bottom: 8%;
-  left: 50%;
-  transform: translate(-50%, 0);
-  color: #000;
-  mix-blend-mode: difference;
-}
-
-.drag {
-  position: absolute;
-  padding: 5px;
-  width: 40px;
-  height: 40px;
-  text-align: center;
-  border-radius: 50%;
-  background-color: #000;
-  color: #fff;
-}
-
-.footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 10%;
-  padding: 0 10px;
-}
-
-.made {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 12%;
-  height: 100%;
-}
-
-.made-in-india {
-  width: 50%;
-  height: 60%;
-  background-image: url(../images/tiger.png);
-  background-size: cover;
-}
-
-.second-logo {
-  width: 12%;
-  height: 160%;
-  background-image: url(../images/hand_made.png);
-  background-size: cover;
-}
-
-span {
-  width: 3px;
-  height: 70%;
-  background-color: rgb(7, 7, 7);
-}
-
-.text {
-  font-size: 1.1em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 20%;
-  height: 100%;
-  color: rgb(7, 7, 7);
-} */
 
 /* footer css code here ---------------------------------------------- */
 
@@ -690,13 +456,13 @@ span {
   display: flex;
   width: 100%;
   height: 100%;
-  background-color: #00000097;
+  background-color: white;
 }
 
 section {
   width: calc(100% / 3);
   height: 100%;
-  color: #e5e5e5;
+  color: #000000;
 }
 #rugs-footer {
   margin-top: 4vh;
@@ -845,7 +611,7 @@ section {
  }
  .page5 .slider{
      position: relative;
-      max-width: 50rem; 
+    max-width: 50rem; 
      height: 26.625rem; 
      margin: 0 auto;
      overflow: hidden;
